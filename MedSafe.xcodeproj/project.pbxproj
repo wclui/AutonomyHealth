@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7DDEA50A2250BC18000D4195 /* textClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */; };
+		CD1C380F2250F916009946D8 /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C380E2250F916009946D8 /* color.swift */; };
+		CD1C3811225107D0009946D8 /* textClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CD1C3810225107D0009946D8 /* textClassifier.mlmodel */; };
+		CD1C3813225107D9009946D8 /* TestMLStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C3812225107D9009946D8 /* TestMLStuff.swift */; };
+		CD1C381522511A8D009946D8 /* checkListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C381422511A8D009946D8 /* checkListCell.swift */; };
 		CDE3709C224FB1E300C35129 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3709B224FB1E300C35129 /* AppDelegate.swift */; };
 		CDE3709E224FB1E300C35129 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3709D224FB1E300C35129 /* ViewController.swift */; };
 		CDE370A1224FB1E300C35129 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE3709F224FB1E300C35129 /* Main.storyboard */; };
@@ -16,7 +19,8 @@
 		CDE370B1224FB1E400C35129 /* MedSafeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE370B0224FB1E400C35129 /* MedSafeTests.swift */; };
 		CDE370BC224FB1E400C35129 /* MedSafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE370BB224FB1E400C35129 /* MedSafeUITests.swift */; };
 		CDE370CA2250316D00C35129 /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE370C92250316D00C35129 /* SecondPage.swift */; };
-		CDE370CC22505BEC00C35129 /* TestMLStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE370CB22505BEC00C35129 /* TestMLStuff.swift */; };
+		CDFF30B022512637000F86AF /* GoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF30AF22512637000F86AF /* GoogleTranslate.swift */; };
+		CDFF30B22251286E000F86AF /* ThirdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF30B12251286E000F86AF /* ThirdPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = textClassifier.mlmodel; sourceTree = "<group>"; };
+		CD1C380E2250F916009946D8 /* color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = color.swift; sourceTree = "<group>"; };
+		CD1C3810225107D0009946D8 /* textClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = textClassifier.mlmodel; path = ../../../Downloads/textClassifier.mlmodel; sourceTree = "<group>"; };
+		CD1C3812225107D9009946D8 /* TestMLStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestMLStuff.swift; path = ../../../Downloads/TestMLStuff.swift; sourceTree = "<group>"; };
+		CD1C381422511A8D009946D8 /* checkListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkListCell.swift; sourceTree = "<group>"; };
 		CDE37098224FB1E300C35129 /* MedSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3709B224FB1E300C35129 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDE3709D224FB1E300C35129 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +59,8 @@
 		CDE370BB224FB1E400C35129 /* MedSafeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedSafeUITests.swift; sourceTree = "<group>"; };
 		CDE370BD224FB1E400C35129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDE370C92250316D00C35129 /* SecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
-		CDE370CB22505BEC00C35129 /* TestMLStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMLStuff.swift; sourceTree = "<group>"; };
+		CDFF30AF22512637000F86AF /* GoogleTranslate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleTranslate.swift; sourceTree = "<group>"; };
+		CDFF30B12251286E000F86AF /* ThirdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +111,19 @@
 		CDE3709A224FB1E300C35129 /* MedSafe */ = {
 			isa = PBXGroup;
 			children = (
+				CDFF30AF22512637000F86AF /* GoogleTranslate.swift */,
+				CD1C3812225107D9009946D8 /* TestMLStuff.swift */,
+				CD1C3810225107D0009946D8 /* textClassifier.mlmodel */,
 				CDE3709B224FB1E300C35129 /* AppDelegate.swift */,
 				CDE3709D224FB1E300C35129 /* ViewController.swift */,
 				CDE3709F224FB1E300C35129 /* Main.storyboard */,
 				CDE370A2224FB1E400C35129 /* Assets.xcassets */,
 				CDE370A4224FB1E400C35129 /* LaunchScreen.storyboard */,
 				CDE370A7224FB1E400C35129 /* Info.plist */,
-				7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */,
 				CDE370C92250316D00C35129 /* SecondPage.swift */,
-				CDE370CB22505BEC00C35129 /* TestMLStuff.swift */,
+				CD1C380E2250F916009946D8 /* color.swift */,
+				CD1C381422511A8D009946D8 /* checkListCell.swift */,
+				CDFF30B12251286E000F86AF /* ThirdPage.swift */,
 			);
 			path = MedSafe;
 			sourceTree = "<group>";
@@ -265,11 +277,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1C381522511A8D009946D8 /* checkListCell.swift in Sources */,
 				CDE3709E224FB1E300C35129 /* ViewController.swift in Sources */,
-				CDE370CC22505BEC00C35129 /* TestMLStuff.swift in Sources */,
+				CD1C3811225107D0009946D8 /* textClassifier.mlmodel in Sources */,
+				CDFF30B022512637000F86AF /* GoogleTranslate.swift in Sources */,
 				CDE3709C224FB1E300C35129 /* AppDelegate.swift in Sources */,
+				CD1C380F2250F916009946D8 /* color.swift in Sources */,
+				CD1C3813225107D9009946D8 /* TestMLStuff.swift in Sources */,
 				CDE370CA2250316D00C35129 /* SecondPage.swift in Sources */,
-				7DDEA50A2250BC18000D4195 /* textClassifier.mlmodel in Sources */,
+				CDFF30B22251286E000F86AF /* ThirdPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
