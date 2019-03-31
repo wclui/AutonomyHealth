@@ -20,18 +20,23 @@ public class ViewController: UIViewController {
     
     @IBOutlet weak var segmentCtrl: UISegmentedControl!
     
+    @IBOutlet weak var nextButton: UIButton!
+    
     @IBOutlet weak var textView: UITextView!
     
     private var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US")) //1
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private var audioEngine = AVAudioEngine()
+    
     var lang: String = "en-US"
     var finalList = [String]()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        nextButton.layer.cornerRadius = 8.0
+        startStopBtn.layer.cornerRadius = 8.0
         startStopBtn.isEnabled = false  //2
         
         self.speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: lang))
@@ -62,18 +67,17 @@ public class ViewController: UIViewController {
         }
         
         self.speechRecognizer?.delegate = self as? SFSpeechRecognizerDelegate  //3
-//        let recognitionTask = SFSpeechRecognitionTask();
-//        self.speechRecognizer?.recognitionTask(with: recognitionTask, resultHandler: { (recognitionResult, error) in
-//            guard error == nil else {
-//                print(error);
-//                return;
-//            }
-//
-//            print("hello");
-//        });
+
+        textView.backgroundColor = UIColor.white
+        textView.layer.borderWidth = 1
+        textView.layer.cornerRadius = 8
+        textView.layer.borderColor = Colors.color1.cgColor;
         
-/*        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
-         */
+        segmentCtrl.tintColor = Colors.color2
+        startStopBtn.tintColor = UIColor.white
+        startStopBtn.backgroundColor = Colors.color1
+        nextButton.tintColor = UIColor.white
+        nextButton.backgroundColor = Colors.color2
     }
          /*
     
@@ -86,17 +90,7 @@ public class ViewController: UIViewController {
   */
     
     
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        let example_text = "Hi My name is doctor price . I am your family doctor for today . Good evening you look pale and your voice is out of tune . Yes doctor I’m running a temperature and have a sore throat . You have moderate fever . The fever is high at 99.8 . Your blood pressure is fine . You’ve few symptoms of malaria . I would suggest you undergo blood test . Nothing to worry about . In most cases the test come out to be negative . It is just precautionary as there have been spurt in malaria cases in the last month or so . I am prescribing three medicines and a syrup . The number of dots in front of each tells you how many times in the day you’ve to take them . For example the two dots here mean you have to take the medicine twice in the day, once in the morning and once after dinner ."
-        TestML.summarize(text: example_text) { (summary, error) in
-            guard error == nil else {
-                return;
-            }
-            
-            self.textView.text = summary;
-        }
-    }
+
     
     @IBAction func segmentAct(_ sender: Any) {
         switch segmentCtrl.selectedSegmentIndex {
@@ -138,20 +132,14 @@ public class ViewController: UIViewController {
         
         var text:String = ""
         
-        for i in 0..<self.finalList.count-1{
+        for i in 0..<self.finalList.count {
             text += self.finalList[i] + ". ";
         }
         
-
         nextPage.myStringValue = text
+        nextPage.tokenizedString = finalList;
         
         self.navigationController?.pushViewController(nextPage, animated: true);
-        
-        
-        
-        
-        
-        
         
     }
     
@@ -198,10 +186,10 @@ public class ViewController: UIViewController {
                 finalText += result.bestTranscription.formattedString
                 self.textView.text = finalText
                 isFinal = result.isFinal
-                if(Date().timeIntervalSince(elapsedTime) > 2){
+                if(Date().timeIntervalSince(elapsedTime) > 1.5){
 //                    finalText += ". "
                     var temp_text: String = ""
-                    for i in count..<result.bestTranscription.segments.count-1{
+                    for i in count..<result.bestTranscription.segments.count{
                         temp_text += result.bestTranscription.segments[i].substring + " ";
                     }
                     count = result.bestTranscription.segments.count-1
