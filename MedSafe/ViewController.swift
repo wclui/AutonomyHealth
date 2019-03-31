@@ -9,9 +9,10 @@
 import UIKit
 import Speech
 
-class ViewController: UIViewController {
+public class ViewController: UIViewController {
 
- 
+ //viper
+    //mvvm
     @IBOutlet weak var startStopBtn: UIButton!
     
     @IBOutlet weak var segmentCtrl: UISegmentedControl!
@@ -24,12 +25,12 @@ class ViewController: UIViewController {
     private var audioEngine = AVAudioEngine()
     var lang: String = "en-US"
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         startStopBtn.isEnabled = false  //2
-        speechRecognizer?.delegate = self as? SFSpeechRecognizerDelegate  //3
-        speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: lang))
+        
+        self.speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: lang))
         SFSpeechRecognizer.requestAuthorization { (authStatus) in  //4
             
             var isButtonEnabled = false
@@ -55,7 +56,44 @@ class ViewController: UIViewController {
                 self.startStopBtn.isEnabled = isButtonEnabled
             }
         }
+        
+        self.speechRecognizer?.delegate = self as? SFSpeechRecognizerDelegate  //3
+        let recognitionTask = SFSpeechRecognitionTask();
+//        self.speechRecognizer?.recognitionTask(with: recognitionTask, resultHandler: { (recognitionResult, error) in
+//            guard error == nil else {
+//                print(error);
+//                return;
+//            }
+//
+//            print("hello");
+//        });
+        
+/*        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+         */
     }
+         /*
+    
+    @objc public func doneButtonPressed() {
+        guard let nextPage = self.storyboard?.instantiateViewController(withIdentifier: "SecondPage") else { return; }
+        
+        self.navigationController?.pushViewController(nextPage, animated: true);
+
+    }
+  */
+    
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        TestML.summarize(text: "This is the non summary") { (summary, error) in
+            guard error == nil else {
+                return;
+            }
+            
+            self.textView.text = summary;
+        }
+    }
+    
     @IBAction func segmentAct(_ sender: Any) {
         switch segmentCtrl.selectedSegmentIndex {
         case 0:
@@ -66,15 +104,6 @@ class ViewController: UIViewController {
             break;
         case 2:
             lang = "es"
-            break;
-        case 3:
-            lang = "zh-Hans"
-            break;
-        case 4:
-            lang = "ru"
-            break;
-        case 5:
-            lang = "hi"
             break;
         default:
             lang = "en-US"
@@ -98,6 +127,16 @@ class ViewController: UIViewController {
             startStopBtn.setTitle("Stop Recording", for: .normal)
         }
     }
+    
+    
+    @IBAction func nextButtonPressed(_ sender: UIButton) {
+        guard let nextPage = self.storyboard?.instantiateViewController(withIdentifier: "SecondPage") as? SecondPage else { return; }
+        
+        nextPage.infoDelegate = self
+        self.navigationController?.pushViewController(nextPage, animated: true);
+    }
+    
+    
     func startRecording() {
         
         if recognitionTask != nil {
@@ -124,14 +163,37 @@ class ViewController: UIViewController {
         }
         
         recognitionRequest.shouldReportPartialResults = true
+//        recognitionTask.sate
+        var elapsedTime: Date = Date();
+        var prevCount = 0
         
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
             var isFinal = false
+//            if let duration = result?.bestTranscription.segments[0].duration {
+//                print("Recognition duration: \(duration)");
+//                if Date().timeIntervalSince(elapsedTime) - duration > 3 {
+//                    isFinal=true
+//                    self.textView.text.append(". ");
+//                    print(". ")
+//                    elapsedTime = Date();
+//                }
+//            }
             
-            if result != nil {
+            if result != nil, let bestTranscription = result?.bestTranscription, bestTranscription.segments.count > 0 {
+                let currentSegment = bestTranscription.segments.count - 1;
+                guard currentSegment + 1 > prevCount else { return; }
+                prevCount = currentSegment + 1;
                 
-                self.textView.text = result?.bestTranscription.formattedString
+                var finalText: String = "";
+                if currentSegment > 1, Date().timeIntervalSince(elapsedTime) > 1.5 {
+                    finalText += ". ";
+                }
+                elapsedTime = Date();
+                
+                finalText += bestTranscription.segments[currentSegment].substring + " ";
+                
+                self.textView.text += finalText
                 isFinal = (result?.isFinal)!
             }
             
@@ -143,6 +205,7 @@ class ViewController: UIViewController {
                 self.recognitionTask = nil
                 
                 self.startStopBtn.isEnabled = true
+                self.textView.text.append(". ");
             }
         })
         

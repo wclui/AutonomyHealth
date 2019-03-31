@@ -30,16 +30,13 @@
                                     <segment title="English"/>
                                     <segment title="French"/>
                                     <segment title="Spanish"/>
-                                    <segment title="Mandarin"/>
-                                    <segment title="Russian"/>
-                                    <segment title="Hindi"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentAct:" destination="BYZ-38-t0r" eventType="valueChanged" id="5FO-39-qH8"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHg-kd-Na0">
-                                <rect key="frame" x="116" y="255" width="143" height="95"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHg-kd-Na0">
+                                <rect key="frame" x="70" y="534" width="235" height="50"/>
                                 <color key="backgroundColor" red="0.85034139509999995" green="0.85034139509999995" blue="0.85034139509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="START"/>
                                 <connections>
@@ -47,24 +44,27 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RY-7l-WMS">
-                                <rect key="frame" x="153" y="473" width="46" height="30"/>
+                                <rect key="frame" x="148" y="584" width="78" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="0.91111228160000002" green="0.96095865869999997" blue="0.97308128240000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="NEXT"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tb9-Wx-CG4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="top" secondItem="IiW-Ub-Zsd" secondAttribute="bottom" constant="-1.5" id="5nV-0Y-9cl"/>
                             <constraint firstItem="IiW-Ub-Zsd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Kz-qE-Wtn"/>
-                            <constraint firstItem="UHg-kd-Na0" firstAttribute="top" secondItem="IiW-Ub-Zsd" secondAttribute="bottom" constant="120" id="C81-rz-Kf5"/>
+                            <constraint firstItem="UHg-kd-Na0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="Iep-P2-8qt"/>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JNP-1K-Zoh"/>
+                            <constraint firstItem="UHg-kd-Na0" firstAttribute="top" secondItem="n7f-Mt-YjD" secondAttribute="bottom" constant="0.5" id="KWC-p0-hYd"/>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SO8-Ti-woT"/>
-                            <constraint firstItem="UHg-kd-Na0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="116" id="Vkq-yA-IqB"/>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="Voa-wJ-4eE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UHg-kd-Na0" secondAttribute="bottom" constant="317" id="WL5-TM-OqW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UHg-kd-Na0" secondAttribute="trailing" constant="70" id="Y45-vV-iQO"/>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aUa-PY-dQu"/>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lL8-UK-6yP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UHg-kd-Na0" secondAttribute="trailing" constant="116" id="lXl-VV-yff"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IiW-Ub-Zsd" secondAttribute="trailing" id="uwK-cb-Fjv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -80,20 +80,34 @@
             </objects>
             <point key="canvasLocation" x="991.20000000000005" y="26.53673163418291"/>
         </scene>
-        <!--View Controller-->
+        <!--Second Page-->
         <scene sceneID="Pj4-26-iKe">
             <objects>
-                <viewController id="Uzs-XC-B4T" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondPage" id="Uzs-XC-B4T" customClass="SecondPage" customModule="MedSafe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9KV-eb-ybx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vql-mN-X6j">
+                                <rect key="frame" x="16" y="115" width="343" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91111228160000002" green="0.96095865869999997" blue="0.97308128240000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2wn-Cs-xub"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qpa-gj-rkp"/>
+                    <connections>
+                        <outlet property="Summary" destination="vql-mN-X6j" id="jbT-VA-rIL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7R-3u-J6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="27"/>
+            <point key="canvasLocation" x="1696.8" y="26.53673163418291"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hKD-0W-jOb">
