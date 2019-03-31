@@ -80,6 +80,20 @@ public class ViewController: UIViewController {
 
     }
   */
+    
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        TestML.summarize(text: "This is the non summary") { (summary, error) in
+            guard error == nil else {
+                return;
+            }
+            
+            self.textView.text = summary;
+        }
+    }
+    
     @IBAction func segmentAct(_ sender: Any) {
         switch segmentCtrl.selectedSegmentIndex {
         case 0:
