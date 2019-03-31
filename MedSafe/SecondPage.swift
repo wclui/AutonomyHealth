@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MessageUI
 public class SecondPage : UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -92,6 +93,31 @@ public class SecondPage : UIViewController {
         
     }
     
+    @IBAction func sendEmail(_ sender: Any) {
+        if !MFMailComposeViewController.canSendMail() {
+            print("Mail services are not available")
+            return
+        }
+        
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self as! MFMailComposeViewControllerDelegate
+        
+        // Configure the fields of the interface.
+        composeVC.setSubject("31 March: Visit Summary and Checklist")
+        composeVC.setMessageBody(self.myStringValue!, isHTML: false)
+        
+        
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+        
+        func mailComposeController(controller: MFMailComposeViewController,
+                                   didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+            // Check the result or perform other tasks.
+            
+            // Dismiss the mail compose view controller.
+            controller.dismiss(animated: true, completion: nil)
+        }
+    }
     @objc public func summaryBtnPressed (){
         guard let thirdPage = self.storyboard?.instantiateViewController(withIdentifier: "ThirdPage") as? ThirdPage else { return;
         }
@@ -134,6 +160,8 @@ extension SecondPage : UITableViewDataSource, UITableViewDelegate {
         print(classifications[indexPath.row]);
     }
     
+    
+    
     func translateText(language: String) {
         
         guard let text_to_translate = self.myStringValue else {
@@ -141,71 +169,53 @@ extension SecondPage : UITableViewDataSource, UITableViewDelegate {
         }
         guard let stringTokens = self.tokenizedString else { return; }
         
+        guard language != "en" else {
+            self.localTokenizedString = self.summary_global;
+            self.localizedStringValue = self.myStringValue;
+            self.tableView.reloadData();
+            return;
+        }
+        
         var prescriptions = [String]()
         var conditions = [String]()
         var management = [String]()
         var referrals = [String]()
         var tests = [String]()
         
-        var totalCount = 0
-        for key in sectionKeys {
-            guard let conArr = self.summary_global[key] else { continue; }
-            let origCount = conArr.count;
-            var curCount = 0;
-            for i in 0..<conArr.count {
+//        var totalCount = 0
+//
+        var origCount = self.summary_global.count;
+        var count = 0;
+        for key in self.sectionKeys {
+            SupportFunctions.translate(textArr: self.summary_global[key] ?? [], language: language) { (textArr, error) in
+                count += 1;
+                guard error == nil, let textArr = textArr else {
+                    if count == origCount {
+                        self.tableView.reloadData();
+                    }
+                    return;
+                }
                 
-                let task = try? GoogleTranslate.sharedInstance.translateTextTask(text: conArr[i], targetLanguage: language, completionHandler: { (translatedText: String?, error: Error?) in
-                    debugPrint(error?.localizedDescription)
-                    
-                    guard let translatedText = translatedText else {
-                        curCount += 1;
-                        
-                        if curCount == origCount {
-                            totalCount += 1;
-                        }
-                        
-                        if totalCount == self.sectionKeys.count {
-                            self.localTokenizedString = ["prescriptions": prescriptions, "conditions": conditions, "management": management, "referrals": referrals, "tests":tests];
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData();
-                            }
-                        }
-                        return;
-                    }
-                    DispatchQueue.main.async {
-                        print("Translated Text: ");
-                        print(translatedText);
-                    }
-                    
-                    if key == "prescriptions" { prescriptions.append(translatedText); }
-                    if key == "conditions" { conditions.append(translatedText); }
-                    if key == "management" { management.append(translatedText); }
-                    if key == "referrals" { referrals.append(translatedText); }
-                    if key == "tests" { tests.append(translatedText); }
-                    
-                    curCount += 1;
-                    
-                    if curCount == origCount {
-                        totalCount += 1;
-                    }
-                    
-                    if totalCount == self.sectionKeys.count {
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData();
-                        }
-                    }
-                });
+                if key == "prescriptions" { prescriptions = textArr; }
+                else if key == "conditions" { conditions = textArr; }
+                else if key == "management" { management = textArr; }
+                else if key == "referrals" { referrals = textArr; }
+                else if key == "tests" { tests = textArr; }
                 
-                task?.resume()
+                if count == origCount {
+                    self.localTokenizedString = ["prescriptions": prescriptions, "conditions": conditions, "management": management, "referrals": referrals, "tests":tests]
+                    self.tableView.reloadData();
+                }
             }
         }
         
-        let task = try? GoogleTranslate.sharedInstance.translateTextTask(text: text_to_translate, targetLanguage: language, completionHandler: { (translatedText: String?, error: Error?) in
-            
-            self.localizedStringValue = translatedText;
-        })
+        SupportFunctions.translate(text: text_to_translate, language: language) { (transText, error) in
+            guard error == nil, let transText = transText else { return; }
+            self.localizedStringValue = transText;
+        }
         
-        task?.resume();
+        
+//        task?.resume();
     }
     
 }

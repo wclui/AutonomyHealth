@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CD1C380F2250F916009946D8 /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C380E2250F916009946D8 /* color.swift */; };
-		CD1C3811225107D0009946D8 /* textClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CD1C3810225107D0009946D8 /* textClassifier.mlmodel */; };
 		CD1C3813225107D9009946D8 /* TestMLStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C3812225107D9009946D8 /* TestMLStuff.swift */; };
 		CD1C381522511A8D009946D8 /* checkListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C381422511A8D009946D8 /* checkListCell.swift */; };
+		CD6EA64022513C91009A1E20 /* textClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CD6EA63F22513C91009A1E20 /* textClassifier.mlmodel */; };
 		CDE3709C224FB1E300C35129 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3709B224FB1E300C35129 /* AppDelegate.swift */; };
 		CDE3709E224FB1E300C35129 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3709D224FB1E300C35129 /* ViewController.swift */; };
 		CDE370A1224FB1E300C35129 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE3709F224FB1E300C35129 /* Main.storyboard */; };
@@ -42,9 +42,9 @@
 
 /* Begin PBXFileReference section */
 		CD1C380E2250F916009946D8 /* color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = color.swift; sourceTree = "<group>"; };
-		CD1C3810225107D0009946D8 /* textClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = textClassifier.mlmodel; path = ../../../Downloads/textClassifier.mlmodel; sourceTree = "<group>"; };
 		CD1C3812225107D9009946D8 /* TestMLStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestMLStuff.swift; path = ../../../Downloads/TestMLStuff.swift; sourceTree = "<group>"; };
 		CD1C381422511A8D009946D8 /* checkListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkListCell.swift; sourceTree = "<group>"; };
+		CD6EA63F22513C91009A1E20 /* textClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = textClassifier.mlmodel; sourceTree = "<group>"; };
 		CDE37098224FB1E300C35129 /* MedSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3709B224FB1E300C35129 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDE3709D224FB1E300C35129 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,9 +113,9 @@
 			children = (
 				CDFF30AF22512637000F86AF /* GoogleTranslate.swift */,
 				CD1C3812225107D9009946D8 /* TestMLStuff.swift */,
-				CD1C3810225107D0009946D8 /* textClassifier.mlmodel */,
 				CDE3709B224FB1E300C35129 /* AppDelegate.swift */,
 				CDE3709D224FB1E300C35129 /* ViewController.swift */,
+				CD6EA63F22513C91009A1E20 /* textClassifier.mlmodel */,
 				CDE3709F224FB1E300C35129 /* Main.storyboard */,
 				CDE370A2224FB1E400C35129 /* Assets.xcassets */,
 				CDE370A4224FB1E400C35129 /* LaunchScreen.storyboard */,
@@ -279,9 +279,9 @@
 			files = (
 				CD1C381522511A8D009946D8 /* checkListCell.swift in Sources */,
 				CDE3709E224FB1E300C35129 /* ViewController.swift in Sources */,
-				CD1C3811225107D0009946D8 /* textClassifier.mlmodel in Sources */,
 				CDFF30B022512637000F86AF /* GoogleTranslate.swift in Sources */,
 				CDE3709C224FB1E300C35129 /* AppDelegate.swift in Sources */,
+				CD6EA64022513C91009A1E20 /* textClassifier.mlmodel in Sources */,
 				CD1C380F2250F916009946D8 /* color.swift in Sources */,
 				CD1C3813225107D9009946D8 /* TestMLStuff.swift in Sources */,
 				CDE370CA2250316D00C35129 /* SecondPage.swift in Sources */,
