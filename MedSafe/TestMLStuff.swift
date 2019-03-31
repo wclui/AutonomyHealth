@@ -11,6 +11,6 @@ import Foundation
 public struct TestML{
     public static func summarize(text: String, completion: @escaping (String?, Error?) -> Void) {
         print(text);
-        let tokenizer = NLTokenizer(unit: .word)
+//        let tokenizer = NLTokenizer(unit: .word)
     }
 }

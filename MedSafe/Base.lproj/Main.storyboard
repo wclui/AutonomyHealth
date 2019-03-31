@@ -19,58 +19,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n7f-Mt-YjD">
-                                <rect key="frame" x="0.0" y="133.5" width="375" height="400"/>
-                                <color key="backgroundColor" red="0.91111228155150636" green="0.96095865869480124" blue="0.97308128238341973" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="16" y="133.5" width="343" height="400"/>
+                                <color key="backgroundColor" red="0.89050478380929166" green="0.92928303275804591" blue="0.94998785621761661" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IiW-Ub-Zsd">
-                                <rect key="frame" x="0.0" y="107" width="375" height="29"/>
-                                <segments>
-                                    <segment title="English"/>
-                                    <segment title="French"/>
-                                    <segment title="Spanish"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentAct:" destination="BYZ-38-t0r" eventType="valueChanged" id="5FO-39-qH8"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHg-kd-Na0">
-                                <rect key="frame" x="70" y="534" width="235" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHg-kd-Na0">
+                                <rect key="frame" x="123" y="538.5" width="129" height="40"/>
                                 <color key="backgroundColor" red="0.85034139509999995" green="0.85034139509999995" blue="0.85034139509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EDs-op-s5x"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="START"/>
                                 <connections>
                                     <action selector="startStopAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IQe-sb-Ibh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RY-7l-WMS">
-                                <rect key="frame" x="148" y="584" width="78" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.91111228160000002" green="0.96095865869999997" blue="0.97308128240000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RY-7l-WMS">
+                                <rect key="frame" x="123" y="592.5" width="129" height="40"/>
+                                <color key="backgroundColor" red="0.85034139509999995" green="0.85034139509999995" blue="0.85034139509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="TZu-w6-56z"/>
+                                </constraints>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="NEXT"/>
                                 <connections>
                                     <action selector="nextButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tb9-Wx-CG4"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IiW-Ub-Zsd">
+                                <rect key="frame" x="0.0" y="97" width="375" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="English"/>
+                                    <segment title="French"/>
+                                    <segment title="Spanish"/>
+                                </segments>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentAct:" destination="BYZ-38-t0r" eventType="valueChanged" id="5FO-39-qH8"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="n7f-Mt-YjD" firstAttribute="top" secondItem="IiW-Ub-Zsd" secondAttribute="bottom" constant="-1.5" id="5nV-0Y-9cl"/>
+                            <constraint firstItem="5RY-7l-WMS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="123" id="0bT-ih-SQO"/>
+                            <constraint firstItem="5RY-7l-WMS" firstAttribute="top" secondItem="UHg-kd-Na0" secondAttribute="bottom" constant="14" id="3dL-KT-6Vy"/>
+                            <constraint firstItem="n7f-Mt-YjD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="8Vi-Qm-SxP"/>
                             <constraint firstItem="IiW-Ub-Zsd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Kz-qE-Wtn"/>
-                            <constraint firstItem="UHg-kd-Na0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="Iep-P2-8qt"/>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JNP-1K-Zoh"/>
-                            <constraint firstItem="UHg-kd-Na0" firstAttribute="top" secondItem="n7f-Mt-YjD" secondAttribute="bottom" constant="0.5" id="KWC-p0-hYd"/>
-                            <constraint firstItem="n7f-Mt-YjD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SO8-Ti-woT"/>
+                            <constraint firstItem="UHg-kd-Na0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QBC-4C-0gv"/>
+                            <constraint firstItem="UHg-kd-Na0" firstAttribute="top" secondItem="n7f-Mt-YjD" secondAttribute="bottom" constant="5" id="SeK-8I-qsM"/>
+                            <constraint firstItem="n7f-Mt-YjD" firstAttribute="top" secondItem="IiW-Ub-Zsd" secondAttribute="bottom" constant="8.5" id="TJo-Qe-rVC"/>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="Voa-wJ-4eE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UHg-kd-Na0" secondAttribute="trailing" constant="70" id="Y45-vV-iQO"/>
-                            <constraint firstItem="n7f-Mt-YjD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aUa-PY-dQu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UHg-kd-Na0" secondAttribute="trailing" constant="123" id="bK0-5o-gsP"/>
+                            <constraint firstItem="5RY-7l-WMS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kPH-8q-HEq"/>
                             <constraint firstItem="n7f-Mt-YjD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lL8-UK-6yP"/>
+                            <constraint firstItem="UHg-kd-Na0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="123" id="mag-mG-LA9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n7f-Mt-YjD" secondAttribute="trailing" constant="16" id="nB5-4m-eqq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5RY-7l-WMS" secondAttribute="trailing" constant="123" id="ugU-JW-Eqe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UHg-kd-Na0" secondAttribute="trailing" constant="123" id="uku-V3-3Xg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IiW-Ub-Zsd" secondAttribute="trailing" id="uwK-cb-Fjv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="yHE-mH-3d4"/>
                     <connections>
+                        <outlet property="nextButtonPressed" destination="5RY-7l-WMS" id="DB6-yj-y0T"/>
                         <outlet property="segmentCtrl" destination="IiW-Ub-Zsd" id="Uy6-G6-AWu"/>
                         <outlet property="startStopBtn" destination="UHg-kd-Na0" id="UQz-0Y-jsZ"/>
                         <outlet property="textView" destination="n7f-Mt-YjD" id="eTp-7D-6NC"/>
@@ -91,11 +107,45 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vql-mN-X6j">
                                 <rect key="frame" x="16" y="115" width="343" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.91111228160000002" green="0.96095865869999997" blue="0.97308128240000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.84983483902617085" green="0.9071537156079692" blue="0.97308128240000002" alpha="0.36693992077464788" colorSpace="custom" customColorSpace="displayP3"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLY-QU-BaQ">
+                                <rect key="frame" x="16" y="82" width="73" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CheckList" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaD-PO-gdC">
+                                <rect key="frame" x="16" y="335" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tbX-Il-Vce">
+                                <rect key="frame" x="16" y="364" width="343" height="186"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93677415956893362" green="0.93873720824769458" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yD-Is-5y5">
+                                <rect key="frame" x="40" y="573" width="90" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.85034139509999995" green="0.85034139509999995" blue="0.85034139509999995" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="EMAIL"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Di-JI-SyF">
+                                <rect key="frame" x="248" y="573" width="80" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.85034139509999995" green="0.85034139509999995" blue="0.85034139509999995" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="PRINT"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2wn-Cs-xub"/>
@@ -103,6 +153,9 @@
                     <navigationItem key="navigationItem" id="qpa-gj-rkp"/>
                     <connections>
                         <outlet property="Summary" destination="vql-mN-X6j" id="jbT-VA-rIL"/>
+                        <outlet property="checkList" destination="tbX-Il-Vce" id="WNy-p6-9y6"/>
+                        <outlet property="emailButton" destination="7yD-Is-5y5" id="wRf-qc-pRs"/>
+                        <outlet property="printButton" destination="7Di-JI-SyF" id="mFl-W8-Cdf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7R-3u-J6w" userLabel="First Responder" sceneMemberID="firstResponder"/>

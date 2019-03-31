@@ -19,16 +19,38 @@ public class ViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     
+    @IBOutlet weak var nextButtonPressed: UIButton!
+    
+    var gradientLayer: CAGradientLayer!
+    
     private var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US")) //1
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private var audioEngine = AVAudioEngine()
     var lang: String = "en-US"
     
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        startStopBtn.layer.cornerRadius = 8.0
+        textView.layer.cornerRadius = 7.0
+        nextButtonPressed.layer.cornerRadius = 8.0
+        view.backgroundColor = UIColor(displayP3Red: 159/255, green: 153/255, blue: 242/255, alpha: 0.9)
+        
+        
+        func createGradientLayer() {
+            gradientLayer = CAGradientLayer()
+            
+            gradientLayer.frame = self.view.bounds
+            
+            gradientLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
+            
+            self.view.layer.addSublayer(gradientLayer)
+        }
+        
         startStopBtn.isEnabled = false  //2
+        
         
         self.speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: lang))
         SFSpeechRecognizer.requestAuthorization { (authStatus) in  //4
@@ -80,8 +102,10 @@ public class ViewController: UIViewController {
 
     }
   */
-    
-    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //createGradientLayer()
+    }
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
@@ -130,6 +154,7 @@ public class ViewController: UIViewController {
     
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
+        nextButtonPressed.layer.cornerRadius = 8.0
         guard let nextPage = self.storyboard?.instantiateViewController(withIdentifier: "SecondPage") as? SecondPage else { return; }
         
         nextPage.infoDelegate = self
