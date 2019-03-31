@@ -8,6 +8,9 @@
 
 import UIKit
 import Speech
+import AVFoundation
+import NaturalLanguage
+
 
 public class ViewController: UIViewController {
 
@@ -24,6 +27,7 @@ public class ViewController: UIViewController {
     private var recognitionTask: SFSpeechRecognitionTask?
     private var audioEngine = AVAudioEngine()
     var lang: String = "en-US"
+    var finalList = [String]()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +62,7 @@ public class ViewController: UIViewController {
         }
         
         self.speechRecognizer?.delegate = self as? SFSpeechRecognizerDelegate  //3
-        let recognitionTask = SFSpeechRecognitionTask();
+//        let recognitionTask = SFSpeechRecognitionTask();
 //        self.speechRecognizer?.recognitionTask(with: recognitionTask, resultHandler: { (recognitionResult, error) in
 //            guard error == nil else {
 //                print(error);
@@ -84,8 +88,8 @@ public class ViewController: UIViewController {
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-        
-        TestML.summarize(text: "This is the non summary") { (summary, error) in
+        let example_text = "Hi My name is doctor price . I am your family doctor for today . Good evening you look pale and your voice is out of tune . Yes doctor I’m running a temperature and have a sore throat . You have moderate fever . The fever is high at 99.8 . Your blood pressure is fine . You’ve few symptoms of malaria . I would suggest you undergo blood test . Nothing to worry about . In most cases the test come out to be negative . It is just precautionary as there have been spurt in malaria cases in the last month or so . I am prescribing three medicines and a syrup . The number of dots in front of each tells you how many times in the day you’ve to take them . For example the two dots here mean you have to take the medicine twice in the day, once in the morning and once after dinner ."
+        TestML.summarize(text: example_text) { (summary, error) in
             guard error == nil else {
                 return;
             }
@@ -110,7 +114,6 @@ public class ViewController: UIViewController {
             break;
         }
         
-        
         speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: lang))
     }
     
@@ -130,10 +133,26 @@ public class ViewController: UIViewController {
     
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
-        guard let nextPage = self.storyboard?.instantiateViewController(withIdentifier: "SecondPage") as? SecondPage else { return; }
+        let nextPage = self.storyboard?.instantiateViewController(withIdentifier: "SecondPage") as! SecondPage 
+//        nextPage.infoDelegate = self
         
-        nextPage.infoDelegate = self
+        var text:String = ""
+        
+        for i in 0..<self.finalList.count-1{
+            text += self.finalList[i] + ". ";
+        }
+        
+
+        nextPage.myStringValue = text
+        
         self.navigationController?.pushViewController(nextPage, animated: true);
+        
+        
+        
+        
+        
+        
+        
     }
     
     
@@ -163,51 +182,86 @@ public class ViewController: UIViewController {
         }
         
         recognitionRequest.shouldReportPartialResults = true
-//        recognitionTask.sate
         var elapsedTime: Date = Date();
-        var prevCount = 0
+//        var prevCount = 0
         
-        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
-            
+        var count: Int = 0
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest) { result, error in
             var isFinal = false
-//            if let duration = result?.bestTranscription.segments[0].duration {
-//                print("Recognition duration: \(duration)");
-//                if Date().timeIntervalSince(elapsedTime) - duration > 3 {
-//                    isFinal=true
-//                    self.textView.text.append(". ");
-//                    print(". ")
-//                    elapsedTime = Date();
-//                }
-//            }
+            var finalText: String = ""
             
-            if result != nil, let bestTranscription = result?.bestTranscription, bestTranscription.segments.count > 0 {
-                let currentSegment = bestTranscription.segments.count - 1;
-                guard currentSegment + 1 > prevCount else { return; }
-                prevCount = currentSegment + 1;
-                
-                var finalText: String = "";
-                if currentSegment > 1, Date().timeIntervalSince(elapsedTime) > 1.5 {
-                    finalText += ". ";
+            
+//            print("Here again!")
+            
+            if let result = result {
+                // Update the text view with the results.
+                finalText += result.bestTranscription.formattedString
+                self.textView.text = finalText
+                isFinal = result.isFinal
+                if(Date().timeIntervalSince(elapsedTime) > 2){
+//                    finalText += ". "
+                    var temp_text: String = ""
+                    for i in count..<result.bestTranscription.segments.count-1{
+                        temp_text += result.bestTranscription.segments[i].substring + " ";
+                    }
+                    count = result.bestTranscription.segments.count-1
+//                    print(temp_text)
+                    self.finalList.append(temp_text)
+                    print(self.finalList)
+                    print("Full Stop")
+                    
+//                    result = SFSpeechRecognitionResult(coder: )
                 }
                 elapsedTime = Date();
-                
-                finalText += bestTranscription.segments[currentSegment].substring + " ";
-                
-                self.textView.text += finalText
-                isFinal = (result?.isFinal)!
             }
             
             if error != nil || isFinal {
+                // Stop recognizing speech if there is a problem.
+                
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
-                
+
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                
+
                 self.startStopBtn.isEnabled = true
                 self.textView.text.append(". ");
+                print(self.finalList)
             }
-        })
+        }
+        
+//        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+//
+//            var isFinal = false
+//
+//            if result != nil, let bestTranscription = result?.bestTranscription, bestTranscription.segments.count > 0 {
+//                let currentSegment = bestTranscription.segments.count - 1;
+//                guard currentSegment + 1 > prevCount else { return; }
+//                prevCount = currentSegment + 1;
+//
+//                var finalText: String = "";
+//                if currentSegment > 1, Date().timeIntervalSince(elapsedTime) > 1.5 {
+//                    finalText += ". ";
+//                }
+//                elapsedTime = Date();
+//
+//                finalText += bestTranscription.segments[currentSegment].substring + " ";
+//
+//                self.textView.text += finalText
+//                isFinal = (result?.isFinal)!
+//            }
+//
+//            if error != nil || isFinal {
+//                self.audioEngine.stop()
+//                inputNode.removeTap(onBus: 0)
+//
+//                self.recognitionRequest = nil
+//                self.recognitionTask = nil
+//
+//                self.startStopBtn.isEnabled = true
+//                self.textView.text.append(". ");
+//            }
+//        })
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
@@ -222,7 +276,7 @@ public class ViewController: UIViewController {
             print("audioEngine couldn't start because of an error.")
         }
         
-        textView.text = "Say something, I'm listening!"
+        textView.text = ""
         
     }
     
