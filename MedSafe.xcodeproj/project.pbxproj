@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D64CC4A2251025E002657D9 /* GoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D64CC492251025E002657D9 /* GoogleTranslate.swift */; };
 		7DDEA50A2250BC18000D4195 /* textClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */; };
 		CDE3709C224FB1E300C35129 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3709B224FB1E300C35129 /* AppDelegate.swift */; };
 		CDE3709E224FB1E300C35129 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3709D224FB1E300C35129 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D64CC492251025E002657D9 /* GoogleTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslate.swift; sourceTree = "<group>"; };
 		7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = textClassifier.mlmodel; sourceTree = "<group>"; };
 		CDE37098224FB1E300C35129 /* MedSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3709B224FB1E300C35129 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */,
 				CDE370C92250316D00C35129 /* SecondPage.swift */,
 				CDE370CB22505BEC00C35129 /* TestMLStuff.swift */,
+				7D64CC492251025E002657D9 /* GoogleTranslate.swift */,
 			);
 			path = MedSafe;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				CDE3709E224FB1E300C35129 /* ViewController.swift in Sources */,
 				CDE370CC22505BEC00C35129 /* TestMLStuff.swift in Sources */,
 				CDE3709C224FB1E300C35129 /* AppDelegate.swift in Sources */,
+				7D64CC4A2251025E002657D9 /* GoogleTranslate.swift in Sources */,
 				CDE370CA2250316D00C35129 /* SecondPage.swift in Sources */,
 				7DDEA50A2250BC18000D4195 /* textClassifier.mlmodel in Sources */,
 			);

@@ -86,17 +86,17 @@ public class ViewController: UIViewController {
   */
     
     
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        let example_text = "Hi My name is doctor price . I am your family doctor for today . Good evening you look pale and your voice is out of tune . Yes doctor I’m running a temperature and have a sore throat . You have moderate fever . The fever is high at 99.8 . Your blood pressure is fine . You’ve few symptoms of malaria . I would suggest you undergo blood test . Nothing to worry about . In most cases the test come out to be negative . It is just precautionary as there have been spurt in malaria cases in the last month or so . I am prescribing three medicines and a syrup . The number of dots in front of each tells you how many times in the day you’ve to take them . For example the two dots here mean you have to take the medicine twice in the day, once in the morning and once after dinner ."
-        TestML.summarize(text: example_text) { (summary, error) in
-            guard error == nil else {
-                return;
-            }
-            
-            self.textView.text = summary;
-        }
-    }
+//    public override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated);
+//        let example_text = "Hi My name is doctor price . I am your family doctor for today . Good evening you look pale and your voice is out of tune . Yes doctor I’m running a temperature and have a sore throat . You have moderate fever . The fever is high at 99.8 . Your blood pressure is fine . You’ve few symptoms of malaria . I would suggest you undergo blood test . Nothing to worry about . In most cases the test come out to be negative . It is just precautionary as there have been spurt in malaria cases in the last month or so . I am prescribing three medicines and a syrup . The number of dots in front of each tells you how many times in the day you’ve to take them . For example the two dots here mean you have to take the medicine twice in the day, once in the morning and once after dinner ."
+//        TestML.summarize(text: example_text) { (summary, error) in
+//            guard error == nil else {
+//                return;
+//            }
+//
+//            self.textView.text = summary;
+//        }
+//    }
     
     @IBAction func segmentAct(_ sender: Any) {
         switch segmentCtrl.selectedSegmentIndex {
@@ -138,23 +138,16 @@ public class ViewController: UIViewController {
         
         var text:String = ""
         
-        for i in 0..<self.finalList.count-1{
-            text += self.finalList[i] + ". ";
+        if(self.finalList.count>0){
+            for i in 0..<self.finalList.count-1{
+                text += self.finalList[i] + ". ";
+            }
         }
         
-
-        nextPage.myStringValue = text
-        
-        self.navigationController?.pushViewController(nextPage, animated: true);
-        
-        
-        
-        
-        
-        
-        
-    }
     
+        nextPage.myStringValue = text
+        self.navigationController?.pushViewController(nextPage, animated: true);
+    }
     
     func startRecording() {
         
