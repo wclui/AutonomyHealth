@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DDEA50A2250BC18000D4195 /* textClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */; };
 		CDE3709C224FB1E300C35129 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3709B224FB1E300C35129 /* AppDelegate.swift */; };
 		CDE3709E224FB1E300C35129 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3709D224FB1E300C35129 /* ViewController.swift */; };
 		CDE370A1224FB1E300C35129 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDE3709F224FB1E300C35129 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = textClassifier.mlmodel; sourceTree = "<group>"; };
 		CDE37098224FB1E300C35129 /* MedSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3709B224FB1E300C35129 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDE3709D224FB1E300C35129 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				CDE370A2224FB1E400C35129 /* Assets.xcassets */,
 				CDE370A4224FB1E400C35129 /* LaunchScreen.storyboard */,
 				CDE370A7224FB1E400C35129 /* Info.plist */,
+				7DDEA5092250BC18000D4195 /* textClassifier.mlmodel */,
 				CDE370C92250316D00C35129 /* SecondPage.swift */,
 				CDE370CB22505BEC00C35129 /* TestMLStuff.swift */,
 			);
@@ -266,6 +269,7 @@
 				CDE370CC22505BEC00C35129 /* TestMLStuff.swift in Sources */,
 				CDE3709C224FB1E300C35129 /* AppDelegate.swift in Sources */,
 				CDE370CA2250316D00C35129 /* SecondPage.swift in Sources */,
+				7DDEA50A2250BC18000D4195 /* textClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
