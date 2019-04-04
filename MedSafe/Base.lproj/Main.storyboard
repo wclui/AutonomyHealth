@@ -153,6 +153,9 @@
                                     <constraint firstAttribute="width" constant="80" id="d0m-tb-aYH"/>
                                 </constraints>
                                 <state key="normal" title="EMAIL"/>
+                                <connections>
+                                    <action selector="sendEmail:" destination="Uzs-XC-B4T" eventType="touchUpInside" id="2gE-Af-9JT"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checklist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-cA-8OO">
                                 <rect key="frame" x="16" y="131" width="343" height="21"/>
